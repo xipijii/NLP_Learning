@@ -1,0 +1,461 @@
+/* ChatGPT 风格深色主题 */
+:root {
+  --bg-app: #212121;
+  --bg-sidebar: #171717;
+  --bg-elevated: #2f2f2f;
+  --bg-input: #303030;
+  --bg-hover: #2a2a2a;
+  --text: #ececec;
+  --text-muted: #b4b4b4;
+  --text-faint: #8e8ea0;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --accent: #10a37f;
+  --accent-dim: rgba(16, 163, 127, 0.15);
+  --user-avatar: #5e5e5e;
+  --max-chat: 48rem;
+  --font: ui-sans-serif, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg-app);
+  color: var(--text);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* —— 侧栏 —— */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--bg-sidebar);
+  display: flex;
+  flex-direction: column;
+  padding: 10px 8px 12px;
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 6px 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.brand-logo {
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.btn-new-chat {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-new-chat:hover {
+  background: var(--bg-hover);
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 8px 10px;
+  overflow-y: auto;
+}
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 8px;
+  padding: 0 4px;
+}
+
+.nav-item {
+  padding: 10px 12px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  cursor: default;
+  transition: background 0.15s;
+}
+
+.nav-item:hover {
+  background: var(--bg-hover);
+}
+
+.sidebar-footer {
+  padding: 12px 14px 4px;
+  font-size: 11px;
+  color: var(--text-faint);
+  line-height: 1.5;
+}
+
+/* —— 主聊天区 —— */
+.chat-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--bg-app);
+  position: relative;
+}
+
+.messages-wrap {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+
+/* —— 欢迎页 —— */
+.welcome-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: min(70vh, 560px);
+  max-width: var(--max-chat);
+  margin: 0 auto;
+  padding: 48px 24px 24px;
+  text-align: center;
+}
+
+.welcome-block h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  color: var(--text);
+}
+
+.chips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  width: 100%;
+  max-width: 640px;
+}
+
+.chip {
+  padding: 14px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.chip:hover {
+  background: var(--bg-elevated);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* —— 消息行（ChatGPT 全宽条纹） —— */
+.message-row {
+  width: 100%;
+  border-bottom: 1px solid transparent;
+  animation: msgIn 0.3s ease;
+}
+
+@keyframes msgIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-row.assistant {
+  background: var(--bg-app);
+}
+
+.message-row.user {
+  background: var(--bg-app);
+}
+
+.message-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: var(--max-chat);
+  margin: 0 auto;
+  padding: 24px 24px 28px;
+}
+
+/* 头像 */
+.avatar {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.avatar svg {
+  width: 16px;
+  height: 16px;
+}
+
+.message-row.assistant .avatar {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 0 1px var(--border);
+}
+
+.message-row.user .avatar-user {
+  background: var(--user-avatar);
+  color: #fff;
+}
+
+.message-content {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.message-row.user .message-content {
+  font-weight: 500;
+  padding-top: 2px;
+}
+
+.message-row.assistant .message-content {
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* 系统动作高亮 */
+.msg-action {
+  display: block;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--accent-dim);
+  border-left: 3px solid var(--accent);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* 打字指示 */
+.message-row.typing .message-content {
+  padding-top: 8px;
+}
+
+.typing-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 20px;
+}
+
+.typing-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-faint);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* —— 底部输入（ChatGPT 胶囊框） —— */
+.composer {
+  flex-shrink: 0;
+  padding: 12px 16px 20px;
+  background: linear-gradient(180deg, transparent 0%, var(--bg-app) 35%);
+}
+
+.composer-inner {
+  max-width: var(--max-chat);
+  margin: 0 auto;
+}
+
+.composer-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 10px 10px 10px 18px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-strong);
+  border-radius: 26px;
+  box-shadow:
+    0 0 0 0 transparent,
+    0 4px 24px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.composer-form:focus-within {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 0 0 0 transparent,
+    0 6px 28px rgba(0, 0, 0, 0.35);
+}
+
+#userInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  max-height: 200px;
+  min-height: 24px;
+  padding: 6px 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: inherit;
+}
+
+#userInput::placeholder {
+  color: var(--text-faint);
+}
+
+.btn-send {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: #424242;
+  color: #8e8ea0;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+}
+
+.btn-send:not(:disabled) {
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+.btn-send:not(:disabled):hover {
+  background: #e5e5e5;
+}
+
+.btn-send:not(:disabled):active {
+  transform: scale(0.94);
+}
+
+.composer-note {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-faint);
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .message-inner {
+    padding: 20px 16px 24px;
+  }
+
+  .composer {
+    padding: 8px 12px 16px;
+  }
+
+  .welcome-block {
+    padding: 32px 16px;
+    min-height: 50vh;
+  }
+}

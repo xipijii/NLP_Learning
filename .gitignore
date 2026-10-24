@@ -1,0 +1,90 @@
+# ==========================================
+# 1. Python cache
+# ==========================================
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ==========================================
+# 2. Virtual environments
+# ==========================================
+.venv/
+venv/
+env/
+ENV/
+
+# ==========================================
+# 3. macOS system files
+# ==========================================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ==========================================
+# 4. PyCharm / JetBrains
+# ==========================================
+.idea/
+*.iml
+
+# ==========================================
+# 5. Environment variables and secrets
+# ==========================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ==========================================
+# 6. Jupyter Notebook
+# ==========================================
+.ipynb_checkpoints/
+
+# ==========================================
+# 7. Machine learning model weights
+# ==========================================
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.h5
+*.hdf5
+*.msgpack
+
+# ==========================================
+# 8. Pretrained model files
+# ==========================================
+bert-base-chinese/
+pytorch_model.bin
+model.safetensors
+
+# ==========================================
+# 9. Large training datasets (project-specific)
+# ==========================================
+Capybara-train.jsonl
+tldr-train.jsonl
+capybara-train.arrow
+tldr-train.arrow
+
+# ==========================================
+# 10. Training output and logs
+# ==========================================
+model_output/
+checkpoints/
+lightning_logs/
+wandb/
+runs/
+*.log
+
+# ==========================================
+# 11. Build and temporary files
+# ==========================================
+build/
+dist/
+*.egg-info/
+*.tmp
+*.swp
+*~

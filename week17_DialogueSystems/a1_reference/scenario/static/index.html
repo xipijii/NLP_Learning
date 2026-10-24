@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>任务型对话助手</title>
+  <link rel="stylesheet" href="/static/style.css?v=4" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="brand" title="任务型对话">
+          <svg class="brand-logo" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path fill="currentColor" d="M12 2a7 7 0 0 1 7 7c0 2.6-1.4 4.9-3.5 6.1L19 22h-3.2l-2.2-4.4h-3.2L8.2 22H5l3.5-6.9A7 7 0 0 1 12 2z"/>
+          </svg>
+          <span class="brand-text">任务型对话</span>
+        </div>
+        <button type="button" class="btn-new-chat" id="btnNewChat">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+          新对话
+        </button>
+      </div>
+      <nav class="sidebar-nav" aria-label="场景说明">
+        <p class="nav-label">场景</p>
+        <div class="nav-item">看电影 · 订票零食</div>
+        <div class="nav-item">买衣服 · 选款分期</div>
+      </nav>
+      <p class="sidebar-footer">任务型引擎 · NLU / DST / PM / NLG</p>
+    </aside>
+
+    <main class="chat-panel">
+      <div class="messages-wrap">
+        <div class="messages" id="messages" role="log" aria-live="polite"></div>
+      </div>
+
+      <footer class="composer">
+        <div class="composer-inner">
+          <form id="chatForm" class="composer-form">
+            <textarea
+              id="userInput"
+              rows="1"
+              placeholder="询问任何问题"
+              autocomplete="off"
+            ></textarea>
+            <button type="submit" class="btn-send" id="btnSend" aria-label="发送" disabled>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+              </svg>
+            </button>
+          </form>
+          <p class="composer-note" id="status">任务型对话由脚本流程驱动，回复来自 NLU · DST · PM · NLG</p>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="/static/app.js?v=4"></script>
+</body>
+</html>

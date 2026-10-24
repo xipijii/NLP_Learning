@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# PyCharm
+.idea/
+
+# 模型权重（体积大，不应上传）
+*.bin
+*.h5
+*.pt
+*.pth
+*.safetensors
+*.ckpt
